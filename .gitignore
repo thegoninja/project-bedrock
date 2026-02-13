@@ -49,5 +49,5 @@ kubeconfig
 *.backup
 *.bak
 
-
+# remove grading.json from git
 terraform/grading.json
