@@ -50,4 +50,5 @@ kubeconfig
 *.bak
 
 # Keep grading.json - this should be committed
-!grading.json
+#!grading.json
+grading.json
