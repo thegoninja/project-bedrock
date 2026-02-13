@@ -49,6 +49,5 @@ kubeconfig
 *.backup
 *.bak
 
-# Keep grading.json - this should be committed
-#!grading.json
-grading.json
+
+terraform/grading.json
