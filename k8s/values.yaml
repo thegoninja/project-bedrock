@@ -1,0 +1,103 @@
+# Helm values for AWS Retail Store Sample App
+# This configures the application to use in-cluster dependencies
+
+# UI Service Configuration
+ui:
+  replicas: 2
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "100m"
+    limits:
+      memory: "256Mi"
+      cpu: "200m"
+
+# Catalog Service Configuration
+catalog:
+  replicas: 2
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "200m"
+
+# Cart Service Configuration
+cart:
+  replicas: 2
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "200m"
+
+# Orders Service Configuration
+orders:
+  replicas: 2
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "200m"
+
+# Checkout Service Configuration
+checkout:
+  replicas: 2
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "200m"
+
+# Assets Service Configuration
+assets:
+  replicas: 2
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "50m"
+    limits:
+      memory: "256Mi"
+      cpu: "100m"
+
+# MySQL (for Catalog Service) - In-Cluster
+mysql:
+  enabled: true
+  primary:
+    persistence:
+      enabled: true
+      size: 8Gi
+
+# PostgreSQL (for Orders Service) - In-Cluster  
+postgresql:
+  enabled: true
+  primary:
+    persistence:
+      enabled: true
+      size: 8Gi
+
+# Redis (for Cart/Session) - In-Cluster
+redis:
+  enabled: true
+  master:
+    persistence:
+      enabled: true
+      size: 8Gi
+
+# RabbitMQ (for async messaging) - In-Cluster
+rabbitmq:
+  enabled: true
+  persistence:
+    enabled: true
+    size: 8Gi
+
+# Service type for UI (ClusterIP for now, can be changed to LoadBalancer)
+service:
+  type: ClusterIP

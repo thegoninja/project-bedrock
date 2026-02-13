@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: retail-app
+  labels:
+    name: retail-app
+    project: barakat-2025-capstone

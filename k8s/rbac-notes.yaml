@@ -1,0 +1,26 @@
+---
+# ClusterRoleBinding to grant view access to the developer IAM user
+# This is applied via EKS access entries in Terraform
+# But we document it here for reference
+
+# The developer user (bedrock-dev-view) is mapped to Kubernetes 
+# via EKS access entries with AmazonEKSViewPolicy which provides
+# read-only access across the cluster
+
+# To verify access:
+# 1. Configure kubectl with developer credentials:
+#    export AWS_ACCESS_KEY_ID=<dev-access-key>
+#    export AWS_SECRET_ACCESS_KEY=<dev-secret-key>
+#    aws eks update-kubeconfig --region us-east-1 --name project-bedrock-cluster
+#
+# 2. Test read access (should succeed):
+#    kubectl get pods -n retail-app
+#    kubectl get deployments -n retail-app
+#    kubectl describe pod <pod-name> -n retail-app
+#
+# 3. Test write access (should fail):
+#    kubectl delete pod <pod-name> -n retail-app
+#    kubectl create deployment test --image=nginx -n retail-app
+
+# Note: The actual RBAC is managed through EKS access entries
+# which map the IAM user to the built-in 'view' ClusterRole
